@@ -7,7 +7,10 @@ The objective is to clean, transform, and analyze animal impoundment trends usin
 AWS Data Analytic Platform for The City of Vancouver- Animal Control Inventory 2024
 
 <h3>Objective</h3>
-✔ Analyze the distribution of animal breeds across different age categories. <br>✔ Identify the most recent impoundment date for each age category.<br>  ✔ Leverage AWS Glue, Glue DataBrew, and Athena to process and extract insights. <br>  ✔ Ensure data security, cost optimization, and monitoring with AWS services.
+✔ Identify the distribution of animal breeds across different age categories <br>✔ Determine the most recent impound date to support strategic decision-making for animal control operations.<br>  ✔ Leverage AWS Glue, Glue DataBrew, and Athena to process and extract insights. <br>  ✔ Ensure data security, cost optimization, and monitoring with AWS services.
+<br> 
+
+![image](https://github.com/user-attachments/assets/bce214b9-cadd-42c8-98af-06e8553e4116)
 
 <h3>Dataset</h3> 
 <table border="0">
@@ -41,11 +44,80 @@ AWS Data Analytic Platform for The City of Vancouver- Animal Control Inventory 2
 <h3>Descriptive Analysis</h3>
 This dataset provides a comprehensive list of all the animals that have been reported to the City of Vancouver Animal Control Department and have been taken into their custody. It is one of the three interlinked datasets about animal reporting in Vancouver. 
  <br>
-<i>Descriptive Metric</i> <br> 
+<i><b>Descriptive Metric</i></b> <br> 
 • Count of animals (by breed)  <br>
 • Maximum impound date (most recent impoundment date) <br>
 <br>
-<i>Analytical Questions </i> <br>
+<i><b>Analytical Questions </i> </b><br>
 • What is the distribution of animal breeds across different age categories? <br>
 • What is the most recent date of animal impoundments? <br>
 
+<h3>Data Ingestion</h3>
+• The dataset was extracted from the City of Vancouver Open Data Portal and stored in an AWS S3 bucket named <i>animal-control-inventory-raw</i>.
+
+• Data was ingested as a CSV file and stored in a structured folder <i>(animal-control/)</i> in the raw zone, maintaining a daily ingestion rate.
+
+![image](https://github.com/user-attachments/assets/7a3cdd3d-0989-48f4-8f69-4626d1c89f6f)
+
+<h3>Data Profiling and Cleaning</h3>
+Data profiling is a crucial step as it helps us to understand the structure and identify various possible issues with the dataset. Data cleaning is very important to clean and prepare the raw data for analysis. It handles all errors in the dataset such as missing values, duplicate values, outdated values, etc. All 17 issues are taken care of using AWS DataBrew cleaning techniques by creating a cleaning job named <i>‘animal-control-cln’</i>. 
+<br> 
+• Created a transformed S3 bucket <i>(animal-control-inventory-trf)</i> with two subfolders:
+
+  1. user/ (CSV output for readability)
+
+  2. system/ (Snappy files optimized for system processing)
+
+• AWS Glue DataBrew was used for profiling and cleaning, with 24 recipe steps, including:
+
+-Removing null values, duplicate records, and special characters
+
+-Formatting timestamps and adjusting column names
+
+-Filling missing values with "unidentified"
+
+-Normalizing Breed names using regex
+
+![image](https://github.com/user-attachments/assets/5a423d72-9c7b-4d80-bc5e-e45b019d71c1)
+
+<h3>ETL Pipeline Design</h3>
+The pipeline is designed to perform the ETL (Extract, Transform, and Load) process, which facilitates the efficient movement and transformation of data to its final destination. The output generated through this process is referred to as analytical data. 
+
+• Built an ETL job <i>(animal-control-inventory)</i> using AWS Glue to transform the dataset:
+
+-Dropped unnecessary columns
+
+-Filtered based on age category (young, senior, puppy, adult)
+
+• Aggregated key metrics:
+
+✅Breed Count per age category
+
+✅Max (latest) impound date
+
+• Data stored in the curated S3 bucket <i>(animal-control-inventory-cur)</i>, partitioned by report_date and age_category.
+![Screenshot 2025-03-24 205221](https://github.com/user-attachments/assets/13779c2a-4a04-4a41-b678-43eeab1bde57)
+![Screenshot 2025-03-24 205245](https://github.com/user-attachments/assets/509cc96f-f29f-4c7f-9489-9520e42b73e2)
+![Screenshot 2025-03-24 204424](https://github.com/user-attachments/assets/342587f2-6725-42d5-9115-2eae85f7c98c)
+
+<h3>Data Analysis</h3>
+The data analysis was performed using AWS Athena. After cleaning the dataset with AWS Glue, only necessary columns (date impounded, breed, and age category) were retained to reduce data scanning costs. 
+
+SQL queries executed to answer the business questions are:
+<br>
+<i>SQL Code 1:</i>
+
+     select max(dateimpounded) as Impound_Date, age category
+     from 'animal_control_trfsystem'
+     group by agecategory;
+
+![image](https://github.com/user-attachments/assets/b843796d-f6f5-4f1f-8e36-d6d3d29824e5)
+
+
+<i>SQL Code 2:</i>
+
+     select count(breed) as Distinct_Breed, age category
+     from 'animal_control_trfsystem'
+     group by agecategory;
+     
+![image](https://github.com/user-attachments/assets/bc02fdcb-f3a9-46d9-8544-64d08138ef5c)
