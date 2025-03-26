@@ -249,17 +249,17 @@ AWS CloudTrail: Recorded user activity and API calls, providing logs for securit
 
 <h3>Deliverables</h3>
 <b>1. Data Protection System:</b> <br>
-> Created IAM roles and policies for secure access control.<br>
-> Implemented encryption with KMS keys for sensitive data in S3.<br>
-> Applied replication and versioning in S3 to ensure data redundancy and disaster recovery.<br>
+•Created IAM roles and policies for secure access control.<br>
+•Implemented encryption with KMS keys for sensitive data in S3.<br>
+•Applied replication and versioning in S3 to ensure data redundancy and disaster recovery.<br>
   
 <b>2. Data Governance Pipeline:</b> <br>
-> Designed an ETL pipeline in AWS Glue to detect sensitive data and evaluate data quality.<br>
-> Set up automated workflows for data processing, including checks for completeness and uniqueness.<br>
-> Enabled replication rules and versioning in S3 for backups and data recovery.<br>
+•Designed an ETL pipeline in AWS Glue to detect sensitive data and evaluate data quality.<br>
+•Set up automated workflows for data processing, including checks for completeness and uniqueness.<br>
+•Enabled replication rules and versioning in S3 for backups and data recovery.<br>
 
 <b>3. Data Monitoring System:</b> <br>
-> Built a CloudWatch dashboard to monitor S3 usage, billing metrics, and other key performance indicators.
-> Configured CloudWatch alarms to notify when certain thresholds (e.g., bucket size bytes) were reached.
-> Set up CloudTrail to record user activity. 
-> Stored logs in an encrypted S3 bucket with versioning enabled to maintain secure records of user actions.
+•Built a CloudWatch dashboard to monitor S3 usage, billing metrics, and other key performance indicators.
+•Configured CloudWatch alarms to notify when certain thresholds (e.g., bucket size bytes) were reached.
+•Set up CloudTrail to record user activity. 
+•Stored logs in an encrypted S3 bucket with versioning enabled to maintain secure records of user actions.
