@@ -231,6 +231,7 @@ AWS Glue was used to build an ETL pipeline to detect sensitive data and enforce 
 
 
 Data quality checks were enforced by setting thresholds for rules like completeness, uniqueness and freshness. These rules helped validate the quality of data, ensuring it met the required standards before being stored in the trusted zone. <br>
+The two folders created for data quality check are passed and default (failed). <br> 
 Replication rules were applied to ensure that data from the primary S3 bucket was automatically replicated to a secondary backup bucket. Versioning was enabled to maintain multiple versions of files for disaster recovery. <br>
 
 <i>S3 Replication Configuration Bucket Encryption Settings</i>
