@@ -160,13 +160,15 @@ Athena Queries: SQL scripts used to answer the business questions:<br>
 
 <h4>Timeline</h4>
 <b>Month 1: Dataset Preparation and Ingestion</b> <br>
-• Week 1: Dataset review and project objectives were established.<br>
-• Week 2: Data ingestion into Amazon S3 was completed, and a folder structure was created for storing raw, processed, and curated data.<br>
-• Week 3: AWS Glue DataBrew was used to clean and structure the dataset. The cleaning process involved normalizing data, removing null values, and renaming columns for better clarity.<br>
+   • Week 1: Dataset review and project objectives were established.<br>
+   • Week 2: Data ingestion into Amazon S3 was completed, and a folder structure was created for storing raw, processed, and curated data.<br>
+   • Week 3: AWS Glue DataBrew was used to clean and structure the dataset. The cleaning process involved normalizing data, removing null values, and renaming columns for better clarity.<br>
+
 <b>Month 2: Data Structuring and Pipeline Design</b><br>
 • Week 4: The structured data schema was finalized for both 2023 and 2024 datasets.<br>
 • Week 5: A data pipeline was designed using AWS Glue to automate the ETL process, ensuring a seamless flow of raw data to the structured dataset.<br>
 • Week 6: The pipeline was implemented, with data moving through extraction, transformation, and loading stages, ensuring that both 2023 and 2024 datasets were ready for analysis.<br>
+
 <b>Month 3: Data Analysis, Visualization, and Publishing</b><br>
 • Week 7: Data analysis was conducted using Amazon Athena, and key metrics such as latest impound date and number of breeds based on age category were computed.<br>
 <br>
