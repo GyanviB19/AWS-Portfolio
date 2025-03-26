@@ -121,3 +121,38 @@ SQL queries executed to answer the business questions are:
      group by agecategory;
      
 ![image](https://github.com/user-attachments/assets/bc02fdcb-f3a9-46d9-8544-64d08138ef5c)
+
+<h2> Tools & Technologies</h2>
+<br>
+<b>Amazon S3:</b>Used for storing datasets at various stages—Landing, Raw, and Curated. <br>
+<b>AWS Glue:</b> Employed to build ETL pipelines for cleaning, transforming, and structuring the data. <br>
+<b>AWS Glue DataBrew:</b> Simplified the data cleaning process with its visual interface. <br>
+<b>Amazon Athena:</b> SQL queries were executed on the cleaned data stored in S3 for analysis. 
+<br>
+
+<h3>Deliverables</h3>
+<h4>Project Documentation </h4> 
+•<b>Project Overview:</b> Explanation of project objectives, methodologies, and AWS services used. <br>
+•<b>Data Sources:</b> Information about the dataset used, including its source, format, and key attributes (AnimalID, DateImpounded, Breed, AgeCategory).<br>
+•<b>Business Questions:</b> Description of the analytical questions to be addressed (breed distribution, recent impound date).<br>
+
+<h4>Data Ingestion and Storage</h4>
+S3 Buckets: <br>
+• Raw Zone: The original dataset stored in a structured folder within S3 (animal-control-inventory-raw).<br>
+• Transformed Zone: Cleaned data stored in a separate bucket (animal-control-inventory-trf) with subfolders for readable (CSV) and optimized (Snappy) formats.<br>
+• Curated Zone: Final processed data stored in a curated bucket (animal-control-inventory-cur), partitioned by report date and age category.<br>
+
+<h4>Data Profiling and Cleaning</h4>
+• Profiling Report: Summary of the data profiling process using AWS Glue DataBrew, identifying 17 issues.<br>
+• Cleaning Report: Documentation of the 24 cleaning steps performed using DataBrew, such as removing nulls, handling duplicates, formatting timestamps, and normalizing breed names.<br>
+
+<h4>ETL Pipeline Design</h4>
+• ETL Process Documentation: Description of the AWS Glue ETL job created to transform the dataset.<br>
+• Pipeline Architecture: Diagram or description of the ETL flow, detailing the extract, transform, and load phases.<br>
+• Aggregated Metrics: Report showing key metrics such as breed count by age category and the most recent impound date.<br>
+• S3 Bucket Outputs: Structured outputs in the curated zone.<br>
+
+<h4>Data Analysis</h4>
+Athena Queries: SQL scripts used to answer the business questions:<br>
+  • Query 1: Recent impound date by age category.<br>
+  • Query 2: Breed distribution by age category.<br>
