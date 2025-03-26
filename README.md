@@ -158,7 +158,18 @@ Athena Queries: SQL scripts used to answer the business questions:<br>
   • Query 1: Recent impound date by age category.<br>
   • Query 2: Breed distribution by age category.<br>
 
-
+<h4>Timeline</h4>
+<b>Month 1: Dataset Preparation and Ingestion</b> <br>
+• Week 1: Dataset review and project objectives were established.<br>
+• Week 2: Data ingestion into Amazon S3 was completed, and a folder structure was created for storing raw, processed, and curated data.<br>
+• Week 3: AWS Glue DataBrew was used to clean and structure the dataset. The cleaning process involved normalizing data, removing null values, and renaming columns for better clarity.<br>
+<b>Month 2: Data Structuring and Pipeline Design</b><br>
+• Week 4: The structured data schema was finalized for both 2023 and 2024 datasets.<br>
+• Week 5: A data pipeline was designed using AWS Glue to automate the ETL process, ensuring a seamless flow of raw data to the structured dataset.<br>
+• Week 6: The pipeline was implemented, with data moving through extraction, transformation, and loading stages, ensuring that both 2023 and 2024 datasets were ready for analysis.<br>
+<b>Month 3: Data Analysis, Visualization, and Publishing</b><br>
+• Week 7: Data analysis was conducted using Amazon Athena, and key metrics such as latest impound date and number of breeds based on age category were computed.<br>
+<br>
 
 # Project 2 💊🚫 AWS Data Governance Framework
 # UCW Substance Use Policy: Data Protection, Governance, and Monitoring System
@@ -209,6 +220,8 @@ AWS KMS was implemented to generate symmetric encryption keys. These keys were u
  <b>2. Data Governance</b> <br>
 AWS Glue was used to build an ETL pipeline to detect sensitive data and enforce governance policies. The ETL pipeline started by loading raw data from the S3 bucket’s raw zone, then transforming and evaluating the data for sensitive information about substance use incidents in UCW. <br>
 
+![Screenshot 2025-03-25 222707](https://github.com/user-attachments/assets/69274934-ffce-4115-8760-143330b5ce6f)
+<br>
 <i>AWS Glue ETL Data Quality Evaluation</i>
 
 ![Screenshot 2025-03-25 211720](https://github.com/user-attachments/assets/3956b58f-c1e6-4909-b984-bf7508e9464c)
@@ -252,14 +265,15 @@ AWS CloudTrail: Recorded user activity and API calls, providing logs for securit
 •Created IAM roles and policies for secure access control.<br>
 •Implemented encryption with KMS keys for sensitive data in S3.<br>
 •Applied replication and versioning in S3 to ensure data redundancy and disaster recovery.<br>
-  
+  <br>
 <b>2. Data Governance Pipeline:</b> <br>
 •Designed an ETL pipeline in AWS Glue to detect sensitive data and evaluate data quality.<br>
 •Set up automated workflows for data processing, including checks for completeness and uniqueness.<br>
 •Enabled replication rules and versioning in S3 for backups and data recovery.<br>
-
+<br>
 <b>3. Data Monitoring System:</b> <br>
-•Built a CloudWatch dashboard to monitor S3 usage, billing metrics, and other key performance indicators.
-•Configured CloudWatch alarms to notify when certain thresholds (e.g., bucket size bytes) were reached.
-•Set up CloudTrail to record user activity. 
-•Stored logs in an encrypted S3 bucket with versioning enabled to maintain secure records of user actions.
+•Built a CloudWatch dashboard to monitor S3 usage, billing metrics, and other key performance indicators.<br>
+•Configured CloudWatch alarms to notify when certain thresholds (e.g., bucket size bytes) were reached.<br>
+•Set up CloudTrail to record user activity. <br>
+•Stored logs in an encrypted S3 bucket with versioning enabled to maintain secure records of user actions.<br>
+
